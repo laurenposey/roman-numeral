@@ -5,13 +5,24 @@ var romanize = {
 
   evalNumber: function(number) {
     romanArray = [];
-    if (number >= 100) {
+    if (number >= 1000) {
+      return this.thousands(number);
+    } else if (number >= 100) {
       return this.hundreds(number);
     } else if (number >= 10) {
       return this.tens(number);
     } else {
       return this.ones(number);
     }
+  },
+
+  thousands: function(number) {
+    var remainder = number % 1000;
+    var thousands = Math.floor(number / 1000);
+    for(var index = 0; index < thousands; index += 1) {
+      romanArray.push("M");
+    }
+    return this.hundreds(remainder);
   },
 
   hundreds: function(number) {
