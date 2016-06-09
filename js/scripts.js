@@ -1,8 +1,40 @@
 // JavaScript/jQuery Business Logic
 var romanArray = [];
+var number;
+var romanize = {
 
-function evalNumber(number) {
-  if (number < 10) {
+  evalNumber: function(number) {
+    romanArray = [];
+    if (number >= 10) {
+      return this.tens(number);
+    } else {
+      return this.ones(number);
+    }
+  },
+
+  tens: function(number) {
+    var remainder = number % 10;
+    var tens = Math.floor(number / 10);
+    if (tens === 4) {
+      romanArray.push("XL");
+    } else if (tens === 9) {
+      romanArray.push("XC");
+    } else if (tens > 5 && tens < 9) {
+      romanArray.push("L");
+      for(var index1 = 0; index1 < (tens % 5); index1 += 1) {
+        romanArray.push("X");
+      }
+    } else if (tens > 0 && tens < 4) {
+      for(var index2 = 0; index2 < tens; index2 += 1) {
+        romanArray.push("X");
+      }
+    } else {
+
+    }
+    return this.ones(remainder);
+  },
+
+  ones: function(number) {
     if (number === 4) {
       romanArray.push("IV");
     } else if (number === 9) {
@@ -18,23 +50,20 @@ function evalNumber(number) {
         romanArray.push("I");
       }
     } else {
-        alert("Enter a number.");
-      }
+
+    }
     return romanArray.join("");
   }
- };
-console.log(evalNumber(2));
+};
+
 // JavaScript/jQuery Front-End Logic
-// $(document).ready(function() {
-//   $("form#pig-latin-form").submit(function(event) {
-//     event.preventDefault();
-//
-//     var englishString = $("input#english").val();
-//     var englishLowerCase = englishString.toLowerCase();
-//     var englishArray = englishLowerCase.split("");
-//     pigArray = pigLatin(englishArray)
-//
-//     $(".translation").text(pigArray);
-//     $("#result").show();
-//   });
-// });
+$(document).ready(function() {
+  $("form#roman-numeral-form").submit(function(event) {
+    event.preventDefault();
+
+    number = parseInt($("input#english-numeral").val());
+
+    $(".conversion").text(romanize.evalNumber(number));
+    $("#result").show();
+  });
+});
