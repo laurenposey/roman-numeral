@@ -5,11 +5,35 @@ var romanize = {
 
   evalNumber: function(number) {
     romanArray = [];
-    if (number >= 10) {
+    if (number >= 100) {
+      return this.hundreds(number);
+    } else if (number >= 10) {
       return this.tens(number);
     } else {
       return this.ones(number);
     }
+  },
+
+  hundreds: function(number) {
+    var remainder = number % 100;
+    var hundreds = Math.floor(number / 100);
+    if (hundreds === 4) {
+      romanArray.push("CD");
+    } else if (hundreds === 9) {
+      romanArray.push("CM");
+    } else if (hundreds > 4 && hundreds < 9) {
+      romanArray.push("D");
+      for(var index1 = 0; index1 < (hundreds % 5); index1 += 1) {
+        romanArray.push("C");
+      }
+    } else if (hundreds > 0 && hundreds < 4) {
+      for(var index2 = 0; index2 < hundreds; index2 += 1) {
+        romanArray.push("C");
+      }
+    } else {
+
+    }
+    return this.tens(remainder);
   },
 
   tens: function(number) {
@@ -19,7 +43,7 @@ var romanize = {
       romanArray.push("XL");
     } else if (tens === 9) {
       romanArray.push("XC");
-    } else if (tens > 5 && tens < 9) {
+    } else if (tens > 4 && tens < 9) {
       romanArray.push("L");
       for(var index1 = 0; index1 < (tens % 5); index1 += 1) {
         romanArray.push("X");
