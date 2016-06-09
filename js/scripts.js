@@ -1,46 +1,40 @@
 // JavaScript/jQuery Business Logic
-var pigArray = [];
-var vowel = ["a", "e", "i", "o", "u"];
-function pigLatin(englishArray) {
-  if(englishArray[0] === "a" || englishArray[0] === "e" || englishArray[0] === "i" || englishArray[0] === "o" || englishArray[0] === "u") {
-  // pigArray = pigArray.concat(englishArray);
-  // // pigArray.push("a", "y");
+var romanArray = [];
 
-} else {
-  var secondVowel = false;
-    for(var index = 0; index < englishArray.length; index += 0) {
-      if (englishArray[index] !== vowel[0] && englishArray[index] !== vowel[1] && englishArray[index] !== vowel[2] && englishArray[index] !== vowel[3] && englishArray[index] !== vowel[4]) {
-        debugger;
-        pigArray.push(englishArray.shift());
+function evalNumber(number) {
+  if (number < 10) {
+    if (number === 4) {
+      romanArray.push("IV");
+    } else if (number === 9) {
+      romanArray.push("IX");
+    } else if (number > 5 && number < 9) {
+      romanArray.push("V");
+      var remainder = number % 5;
+      for(var index1 = 0; index1 < remainder; index1 += 1) {
+        romanArray.push("I");
       }
-      else{
-        secondVowel = true;
+    } else if (number > 0 && number < 4) {
+      for(var index2 = 0; index2 < number; index2 += 1) {
+        romanArray.push("I");
       }
-
-      if (secondVowel){
-        break;
-
+    } else {
+        alert("Enter a number.");
       }
-      // pigArray = englishArray.concat(pigArray);
-    }
+    return romanArray.join("");
   }
-  pigArray.push("a", "y");
-  pigArray = englishArray.concat(pigArray);
-return pigArray.join("");
-console.log(pigArray);
-};
-
+ };
+console.log(evalNumber(2));
 // JavaScript/jQuery Front-End Logic
-$(document).ready(function() {
-  $("form#pig-latin-form").submit(function(event) {
-    event.preventDefault();
-
-    var englishString = $("input#english").val();
-    var englishLowerCase = englishString.toLowerCase();
-    var englishArray = englishLowerCase.split("");
-    pigArray = pigLatin(englishArray)
-
-    $(".translation").text(pigArray);
-    $("#result").show();
-  });
-});
+// $(document).ready(function() {
+//   $("form#pig-latin-form").submit(function(event) {
+//     event.preventDefault();
+//
+//     var englishString = $("input#english").val();
+//     var englishLowerCase = englishString.toLowerCase();
+//     var englishArray = englishLowerCase.split("");
+//     pigArray = pigLatin(englishArray)
+//
+//     $(".translation").text(pigArray);
+//     $("#result").show();
+//   });
+// });
