@@ -2,7 +2,7 @@
 
 #### _Roman Numeral Converter, June 9, 2016_
 
-#### By _**Marty Fitchen, Lauren Posey, Epicodus**_
+#### By _**Marty Fitchen, Lauren Valkyrie, Epicodus**_
 
 ## Description
 
@@ -27,7 +27,7 @@ Determine if the inputted value is less than 1000.  | 999  | CMXCIX
 
 ## Support and contact details
 
-_If you run into any issues or have questions, ideas, or concerns, please feel free to contact Marty at <a href="mailto:mfitchen@gmail.com">mfitchen@gmail.com</a> or Lauren at <a href="mailto:mrslaurenposey@gmail.com">mrslaurenposey@gmail.com</a>._
+_If you run into any issues or have questions, ideas, or concerns, please feel free to contact Marty at <a href="mailto:mfitchen@gmail.com">mfitchen@gmail.com</a>._
 
 ## Technologies Used
 
@@ -44,7 +44,7 @@ _If you run into any issues or have questions, ideas, or concerns, please feel f
 
 *MIT License*
 
-Copyright (c) 2016 **_Marty Fitchen, Lauren Posey, Epicodus_**
+Copyright (c) 2016 **_Marty Fitchen, Lauren Valkyrie, Epicodus_**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
